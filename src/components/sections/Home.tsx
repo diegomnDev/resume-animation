@@ -63,30 +63,30 @@ export default function Home() {
       id="home"
       className="flex h-screen snap-start items-center justify-center bg-white/10 dark:bg-gray-900/10"
     >
-      <motion.div className="text-center" variants={containerVariants} initial="hidden" animate="visible">
-        <motion.h1
-          className="mb-6 bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-5xl font-bold text-transparent md:text-7xl"
-          variants={itemVariants}
-        >
-          <TypedText text="Welcome to My Resume" />
-        </motion.h1>
-        <motion.div
-          className="mb-8 items-start font-mono text-xl text-gray-700 dark:text-gray-300 md:text-2xl"
-          variants={itemVariants}
-        >
-          <TypedText text="function createImpression() {" />
-          <br />
-          <TypedText text="       return 'Crafting digital experiences';" />
-          <br />
-          <TypedText text="}" />
-        </motion.div>
-        <motion.div variants={itemVariants}>
-          <a
-            href="#profile"
-            className="inline-flex size-12 items-center justify-center rounded-full bg-blue-500 text-white transition duration-300 ease-in-out hover:scale-105 hover:bg-blue-600"
-          >
-            <ArrowDown className="size-6 animate-bounce" />
-          </a>
+      <motion.div className="row-start-2 flex flex-col items-center justify-center gap-4" variants={containerVariants} initial="hidden" animate="visible">
+        <motion.div className="rounded-md bg-black/50 p-4" variants={containerVariants} initial="hidden" animate="visible">
+          <motion.div className="mx-auto flex h-full w-4/5 items-center justify-between" variants={containerVariants} initial="hidden" animate="visible">
+            <motion.div className="flex size-full flex-col justify-center gap-2 text-white">
+              <motion.h1 className="text-4xl font-semibold md:text-5xl lg:text-6xl xl:text-7xl">
+                <TypedText text="Hi there, I am'" />
+              </motion.h1>
+              <motion.h1 className="bg-text text-4xl font-semibold md:text-5xl lg:text-6xl xl:text-7xl">
+                <TypedText text="Diego MN!" />
+              </motion.h1>
+              <motion.p className="my-2 text-lg sm:text-xl lg:my-6 lg:text-3xl">
+                <TypedText text="Developer | Passionate about coding and solving complex problems." />
+              </motion.p>
+
+              <motion.div variants={itemVariants} className="mx-auto flex items-center justify-center">
+                <a
+                  href="#profile"
+                  className="inline-flex size-12 items-center justify-center rounded-full bg-primary text-white transition duration-300 ease-in-out hover:scale-105 dark:text-black"
+                >
+                  <ArrowDown className="size-6 animate-bounce" />
+                </a>
+              </motion.div>
+            </motion.div>
+          </motion.div>
         </motion.div>
       </motion.div>
     </section>
