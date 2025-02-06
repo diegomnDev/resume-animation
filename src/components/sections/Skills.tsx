@@ -1,9 +1,8 @@
 'use client';
 
 import { Card, CardContent } from '@/components/ui/card';
+import { siteConfig } from '@/config/site';
 import { motion } from 'framer-motion';
-import { FaAws, FaDatabase, FaJava, FaNodeJs, FaPython, FaReact } from 'react-icons/fa';
-import { SiDocker, SiGraphql, SiHibernate, SiSpring, SiSpringboot, SiTypescript } from 'react-icons/si';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -28,26 +27,13 @@ const itemVariants = {
   },
 };
 
-const skills = [
-  { name: 'React', level: 90, icon: FaReact },
-  { name: 'Node.js', level: 85, icon: FaNodeJs },
-  { name: 'TypeScript', level: 80, icon: SiTypescript },
-  { name: 'Python', level: 75, icon: FaPython },
-  { name: 'SQL', level: 85, icon: FaDatabase },
-  { name: 'GraphQL', level: 70, icon: SiGraphql },
-  { name: 'Docker', level: 65, icon: SiDocker },
-  { name: 'AWS', level: 60, icon: FaAws },
-  { name: 'Java', level: 80, icon: FaJava },
-  { name: 'Spring Boot', level: 75, icon: SiSpringboot },
-  { name: 'Spring MVC', level: 70, icon: SiSpring },
-  { name: 'Spring Data JPA', level: 65, icon: SiHibernate },
-];
-
 export default function Skills() {
+  const skills = siteConfig.skills;
+
   return (
     <section
       id="skills"
-      className="flex h-screen snap-start items-center bg-white/30 backdrop-blur-sm dark:bg-gray-900/30"
+      className="flex h-screen snap-start items-center bg-white/30 dark:bg-gray-900/30"
     >
       <motion.div
         className="container mx-auto max-h-full overflow-y-auto px-4 py-16"
@@ -67,12 +53,12 @@ export default function Skills() {
                 <Card className="bg-white/80 shadow-lg backdrop-blur-sm transition-shadow duration-300 hover:shadow-xl dark:bg-gray-800/80">
                   <CardContent className="p-6">
                     <div className="mb-4 flex items-center">
-                      <skill.icon className="mr-4 size-8 text-blue-500" />
+                      <skill.icon className="mr-4 size-8 " />
                       <h3 className="text-xl font-bold text-gray-800 dark:text-gray-200">{skill.name}</h3>
                     </div>
-                    <div className="h-2.5 w-full rounded-full bg-gray-200 dark:bg-gray-600">
+                    <div className="h-2.5 w-full rounded-full bg-gray-400 dark:bg-gray-600">
                       <motion.div
-                        className="h-2.5 rounded-full bg-blue-600"
+                        className="h-2.5 rounded-full bg-primary"
                         style={{ width: `${skill.level}%` }}
                         initial={{ width: 0 }}
                         animate={{ width: `${skill.level}%` }}

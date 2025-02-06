@@ -1,6 +1,7 @@
 'use client';
 
 import { Card, CardContent } from '@/components/ui/card';
+import { siteConfig } from '@/config/site';
 import { motion } from 'framer-motion';
 
 const containerVariants = {
@@ -25,29 +26,9 @@ const itemVariants = {
   },
 };
 
-const studies = [
-  {
-    degree: 'Master of Science in Computer Science',
-    institution: 'Tech University',
-    period: '2013 - 2015',
-    description:
-      'Specialized in Machine Learning and Artificial Intelligence. Thesis on "Implementing Neural Networks for Natural Language Processing".',
-  },
-  {
-    degree: 'Bachelor of Science in Software Engineering',
-    institution: 'State University',
-    period: '2009 - 2013',
-    description: 'Focused on software development methodologies and data structures. Graduated with honors.',
-  },
-  {
-    degree: 'Full Stack Web Development Bootcamp',
-    institution: 'Code Academy',
-    period: '2015 (3 months intensive)',
-    description: 'Intensive program covering modern web technologies including React, Node.js, and MongoDB.',
-  },
-];
-
 export default function Studies() {
+  const studies = siteConfig.education;
+
   return (
     <section
       id="studies"

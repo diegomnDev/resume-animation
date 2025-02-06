@@ -1,18 +1,10 @@
 'use client';
 
 import { Card, CardContent } from '@/components/ui/card';
+import { siteConfig } from '@/config/site';
 import { motion } from 'framer-motion';
-import { FaJava, FaNodeJs, FaPython, FaReact, FaStripe, FaVuejs } from 'react-icons/fa';
-import {
-  SiDocker,
-  SiFastapi,
-  SiFirebase,
-  SiKubernetes,
-  SiMongodb,
-  SiPostgresql,
-  SiSpringboot,
-  SiTensorflow,
-} from 'react-icons/si';
+import Link from 'next/link';
+import { FaLink } from 'react-icons/fa6';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -37,62 +29,9 @@ const itemVariants = {
   },
 };
 
-const projects = [
-  {
-    name: 'E-commerce Platform',
-    description: 'A full-stack e-commerce solution with real-time inventory management and payment integration.',
-    technologies: [
-      { name: 'React', icon: FaReact },
-      { name: 'Node.js', icon: FaNodeJs },
-      { name: 'MongoDB', icon: SiMongodb },
-      { name: 'Stripe', icon: FaStripe },
-    ],
-  },
-  {
-    name: 'Task Management App',
-    description: 'A collaborative task management application with real-time updates and team chat functionality.',
-    technologies: [
-      { name: 'Vue.js', icon: FaVuejs },
-      { name: 'Firebase', icon: SiFirebase },
-    ],
-  },
-  {
-    name: 'AI-Powered News Aggregator',
-    description:
-      'An intelligent news aggregation platform that uses machine learning to personalize content for users.',
-    technologies: [
-      { name: 'Python', icon: FaPython },
-      { name: 'TensorFlow', icon: SiTensorflow },
-      { name: 'React', icon: FaReact },
-      { name: 'FastAPI', icon: SiFastapi },
-    ],
-  },
-  {
-    name: 'Microservices-based Banking System',
-    description:
-      'A robust banking system built with Spring Boot microservices architecture, featuring account management, transactions, and reporting.',
-    technologies: [
-      { name: 'Java', icon: FaJava },
-      { name: 'Spring Boot', icon: SiSpringboot },
-      { name: 'PostgreSQL', icon: SiPostgresql },
-      { name: 'Docker', icon: SiDocker },
-      { name: 'Kubernetes', icon: SiKubernetes },
-    ],
-  },
-  {
-    name: 'Real-time Inventory Management System',
-    description:
-      'An efficient inventory management system using Spring Boot for backend services and React for the frontend, with real-time updates and analytics.',
-    technologies: [
-      { name: 'Java', icon: FaJava },
-      { name: 'Spring Boot', icon: SiSpringboot },
-      { name: 'React', icon: FaReact },
-      { name: 'PostgreSQL', icon: SiPostgresql },
-    ],
-  },
-];
-
 export default function Projects() {
+  const projects = siteConfig.projects;
+
   return (
     <section
       id="projects"
@@ -117,6 +56,11 @@ export default function Projects() {
                   <CardContent className="p-6">
                     <h3 className="mb-2 text-2xl font-bold text-blue-600 dark:text-blue-400">{project.name}</h3>
                     <p className="mb-4 text-gray-600 dark:text-gray-300">{project.description}</p>
+                    <p className="mb-4 text-gray-600 dark:text-gray-300">
+                      Status:
+                      {' '}
+                      <span className="text-blue-600 dark:text-blue-400">{project.status}</span>
+                    </p>
                     <div className="flex flex-wrap gap-2">
                       {project.technologies.map((tech, techIndex) => {
                         const uniqueTechKey = `${tech.name}-${techIndex}`;
@@ -125,12 +69,23 @@ export default function Projects() {
                             key={uniqueTechKey}
                             className="flex items-center rounded bg-gray-200 px-2 py-1 text-sm text-gray-700 dark:bg-gray-600 dark:text-gray-300"
                           >
-                            <tech.icon className="mr-1 size-4" />
+                            {tech.icon && <tech.icon className="mr-1 size-4" />}
                             {tech.name}
                           </span>
                         );
                       })}
                     </div>
+                    {project.url && (
+                      <Link
+                        href={project.url}
+                        className="mt-4 flex items-center gap-2 text-blue-600 hover:underline dark:text-blue-400"
+                        rel="noopener noreferrer"
+                        target="_blank"
+                      >
+                        <FaLink className="size-4" />
+                        View Project
+                      </Link>
+                    )}
                   </CardContent>
                 </Card>
               </motion.div>

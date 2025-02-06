@@ -46,7 +46,7 @@ export default function Navigation() {
   return (
     <>
       {/* Side navigation for large screens */}
-      <nav className="fixed right-4 top-1/2 z-50 hidden -translate-y-1/2 lg:block">
+      <nav className="fixed right-8 top-1/2 z-50 hidden -translate-y-1/2 lg:block">
         <ul className="flex flex-col gap-4">
           {navItems.map(({ icon: Icon, label, href }) => (
             <li key={href}>
@@ -56,7 +56,7 @@ export default function Navigation() {
                 className={`block rounded-full p-2 transition-colors duration-300 ${
                   activeSection === href.slice(1)
                     ? 'bg-primary text-primary-foreground'
-                    : 'bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600'
+                    : 'bg-gray-200 hover:scale-125 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600'
                 }`}
               >
                 <Icon className="size-6" />
@@ -78,7 +78,7 @@ export default function Navigation() {
                 className={`block rounded-full p-2 transition-colors duration-300 ${
                   activeSection === href.slice(1)
                     ? 'bg-primary text-primary-foreground'
-                    : 'bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600'
+                    : 'bg-gray-200 hover:scale-125 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600'
                 }`}
                 whileHover={{ scale: 1.2 }}
                 whileTap={{ scale: 0.9 }}
