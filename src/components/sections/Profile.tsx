@@ -8,6 +8,8 @@ import * as amplitude from '@amplitude/analytics-browser';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useActionState, useState } from 'react';
+import { FaBriefcase } from 'react-icons/fa6';
+import { TbWorld } from 'react-icons/tb';
 import { ContactModal } from '../ContactModal';
 
 const containerVariants = {
@@ -35,7 +37,6 @@ const itemVariants = {
 
 export default function Profile() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedLanguage, setSelectedLanguage] = useState<string | undefined>(undefined);
   const [state, action, isPending] = useActionState(sendEmail, null);
 
   const handleOpenModal = () => {
@@ -47,18 +48,21 @@ export default function Profile() {
     setIsModalOpen(false);
   };
 
-  const handleDownloadCV = () => {
-    if (selectedLanguage) {
-      // Logic to download CV based on selected language
-      // console.log(`Downloading CV in ${selectedLanguage}`);
-      amplitude.track('CV Downloaded', { language: selectedLanguage });
+  const handleDownloadCV = (language: string) => {
+    if (language) {
+      const filename = language === 'english'
+        ? '/assets/docs/Diego_Montes_Novio_CV.pdf'
+        : '/assets/docs/Diego_Montes_Novio_CV_ES.pdf';
+
+      window.open(filename, '_blank');
+      amplitude.track('CV Downloaded', { language });
     }
   };
 
   return (
     <section
       id="profile"
-      className="flex h-screen snap-start items-center bg-gray-100/30 dark:bg-gray-800/30"
+      className="flex h-screen snap-start place-items-center bg-gray-100/30 dark:bg-gray-800/30"
     >
       <motion.div
         className="container mx-auto px-4"
@@ -67,67 +71,86 @@ export default function Profile() {
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
       >
-        <h2 className="mb-12 bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-center text-4xl font-bold text-transparent">
-          About Me
-        </h2>
-        <div className="grid items-center md:grid-cols-2">
-          <motion.div variants={itemVariants}>
+        <div className="relative mx-auto flex h-auto max-w-4xl flex-wrap items-center">
+          {/* Mobile image */}
+          <motion.div
+            variants={itemVariants}
+            className="relative z-20 mx-2 w-full sm:mx-6 lg:hidden"
+          >
             <Image
               width={500}
               height={500}
               src="/assets/img/profile.jpeg"
               alt="Profile"
-              className="mx-auto size-80 rounded-full object-cover shadow-lg"
+              className="mx-auto size-3/5 translate-y-2 rounded shadow-2xl md:translate-y-4 lg:hidden"
             />
           </motion.div>
-          <motion.div variants={itemVariants}>
-            <Card className="bg-white/80 shadow-xl backdrop-blur-sm dark:bg-gray-800/80">
-              <CardContent className="p-6">
-                <h3 className="mb-4 text-2xl font-bold text-blue-600 dark:text-blue-400">John Doe</h3>
-                <p className="mb-2">
-                  <strong>Email:</strong>
-                  {' '}
-                  john.doe@example.com
+
+          {/* Card */}
+          <motion.div
+            variants={itemVariants}
+            className="z-10 w-full lg:w-3/5"
+          >
+            <Card className="mx-2 rounded-lg bg-white/80 opacity-75 shadow-2xl backdrop-blur-sm dark:bg-gray-800/80 sm:mx-6 lg:mx-0">
+              <CardContent className="p-4 text-center md:p-12 lg:text-left">
+                <h1 className="pt-8 text-3xl font-bold text-blue-600 dark:text-blue-400 lg:pt-0">
+                  Diego Montes Novio
+                </h1>
+                <p className="flex items-center justify-center pt-4 text-base font-bold lg:justify-start">
+                  <FaBriefcase size={16} className="mr-2" />
+                  Developer
                 </p>
-                <p className="mb-2">
-                  <strong>Location:</strong>
-                  {' '}
-                  New York, NY
+                <p className="flex items-center justify-center pt-1 text-base font-bold lg:justify-start">
+                  <TbWorld size={16} className="mr-2" />
+                  Santiago de Compostela
                 </p>
-                <p className="mb-2">
-                  <strong>Profession:</strong>
-                  {' '}
-                  Full Stack Developer
+                <p className="pt-8 text-sm">
+                  Java backend developer trying to understand the world...
                 </p>
-                <p className="mb-6 mt-4">
-                  <strong>Bio:</strong>
-                  {' '}
-                  Passionate about creating innovative web solutions and continuously learning new
-                  technologies. With a keen eye for design and a love for clean code, I strive to build seamless user
-                  experiences that make a difference.
+                <p className="pt-2 text-sm">
+                  I am a software developer with over 10 years of experience in the IT sector,
+                  mainly focused on backend development with some experience in frontend.
+                  I am passionate about technology, enjoy working in collaborative environments,
+                  learning new things, and taking on challenges to keep improving my skills and knowledge.
                 </p>
-                <div className="flex flex-col gap-4 sm:flex-row">
-                  <Button onClick={handleOpenModal}>Contact Me</Button>
-                  <div className="flex items-center gap-2">
-                    <Select onValueChange={setSelectedLanguage}>
-                      <SelectTrigger className="w-[180px]">
-                        <SelectValue placeholder="Select Language" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="english">English</SelectItem>
-                        <SelectItem value="spanish">Spanish</SelectItem>
-                      </SelectContent>
-                    </Select>
-                    <Button onClick={handleDownloadCV} disabled={!selectedLanguage}>
-                      Download CV
-                    </Button>
-                  </div>
+                <div className="flex flex-col items-start gap-2 pt-4 text-sm">
+                  <span className="before:mr-2 before:content-['•']">Spanish (native)</span>
+                  <span className="before:mr-2 before:content-['•']">Galician (native)</span>
+                  <span className="before:mr-2 before:content-['•']">English (intermediate)</span>
+                  <span className="before:mr-2 before:content-['•']">French (intermediate)</span>
+                </div>
+                <div className="flex flex-col justify-center gap-4 pt-8 sm:flex-row">
+                  <Button onClick={handleOpenModal}>Get In Touch</Button>
+                  <Select onValueChange={handleDownloadCV}>
+                    <SelectTrigger className="w-[160px] bg-secondary shadow-xl">
+                      <SelectValue placeholder="Download CV" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="english">English</SelectItem>
+                      <SelectItem value="spanish">Spanish</SelectItem>
+                    </SelectContent>
+                  </Select>
                 </div>
               </CardContent>
             </Card>
           </motion.div>
+
+          {/* Desktop image */}
+          <motion.div
+            variants={itemVariants}
+            className="relative z-20 hidden w-full lg:block lg:w-2/5"
+          >
+            <Image
+              width={500}
+              height={500}
+              src="/assets/img/profile.jpeg"
+              alt="Profile"
+              className="scale-105 rounded-none shadow-2xl lg:rounded"
+            />
+          </motion.div>
         </div>
       </motion.div>
+
       <ContactModal
         isOpen={isModalOpen}
         onClose={handleCloseModal}
