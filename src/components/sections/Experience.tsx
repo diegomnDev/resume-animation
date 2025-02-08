@@ -32,7 +32,7 @@ export default function Experience() {
   return (
     <section id="experience" className="flex min-h-screen snap-start items-center">
       <motion.div
-        className="container mx-auto max-h-full overflow-y-auto px-4 pb-56 pt-20"
+        className="container mx-auto max-h-full overflow-y-auto pb-56 pt-20"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"

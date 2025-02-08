@@ -63,9 +63,9 @@ export default function Home() {
       id="home"
       className="flex h-screen snap-start items-center justify-center "
     >
-      <motion.div className="row-start-2 flex flex-col items-center justify-center gap-4 px-4" variants={containerVariants} initial="hidden" animate="visible">
-        <motion.div className="rounded-md bg-secondary/50 p-4" variants={containerVariants} initial="hidden" animate="visible">
-          <motion.div className="mx-auto flex h-full w-4/5 items-center justify-between" variants={containerVariants} initial="hidden" animate="visible">
+      <motion.div className="row-start-2 flex flex-col items-center justify-center gap-4" variants={containerVariants} initial="hidden" animate="visible">
+        <motion.div className="rounded-md bg-secondary/60 p-5" variants={containerVariants} initial="hidden" animate="visible">
+          <motion.div className="mx-auto flex h-full items-center justify-between" variants={containerVariants} initial="hidden" animate="visible">
             <motion.div className="flex size-full flex-col justify-center gap-2 text-base" variants={containerVariants} initial="hidden" animate="visible">
               <motion.h1 className="text-4xl font-semibold md:text-5xl lg:text-6xl xl:text-7xl">
                 <TypedText text="Hi there, I am" />

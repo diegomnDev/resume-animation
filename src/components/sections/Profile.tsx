@@ -65,7 +65,7 @@ export default function Profile() {
       className="flex min-h-screen snap-start items-center justify-center"
     >
       <motion.div
-        className="container mx-auto px-4 pb-56 pt-20"
+        className="container mx-auto pb-56 pt-20"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"

@@ -35,7 +35,7 @@ export default function Studies() {
       className="flex h-screen snap-start items-center"
     >
       <motion.div
-        className="container mx-auto max-h-full overflow-y-auto px-4 py-16"
+        className="container mx-auto max-h-full overflow-y-auto pb-56 pt-20"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
@@ -44,12 +44,12 @@ export default function Studies() {
         <h2 className="bg-text mb-12 bg-clip-text text-center text-4xl font-bold text-transparent">
           Educational Background
         </h2>
-        <div className="space-y-8 border-l-2 border-dashed border-primary/30">
+        <div className="space-y-8">
           {studies.map((study, index) => {
             const uniqueKey = `${study.degree}-${index}`;
             return (
               <motion.div key={uniqueKey} variants={itemVariants} className="flex w-full justify-center">
-                <Card className="w-full opacity-75 shadow-lg backdrop-blur-sm transition-shadow duration-300 hover:shadow-xl md:w-4/5 lg:w-3/4">
+                <Card className="w-full opacity-75 shadow-lg backdrop-blur-sm transition-shadow duration-300 hover:shadow-xl">
                   <CardContent className="p-6 text-primary">
                     <h3 className="mb-2 text-2xl font-bold">{study.degree}</h3>
                     <h4 className="mb-2 text-xl text-primary/80 ">{study.institution}</h4>

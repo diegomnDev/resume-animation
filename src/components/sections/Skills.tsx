@@ -36,7 +36,7 @@ export default function Skills() {
       className="flex min-h-screen snap-start items-center justify-center "
     >
       <motion.div
-        className="container mx-auto max-h-[80vh] overflow-y-auto px-4 py-20"
+        className="container mx-auto max-h-[80vh] overflow-y-auto pb-56 pt-20"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
@@ -50,7 +50,7 @@ export default function Skills() {
             const uniqueKey = `${skill.name}-${index}`;
             return (
               <motion.div key={uniqueKey} variants={itemVariants}>
-                <Card className="shadow-lg backdrop-blur-sm transition-shadow duration-300 hover:shadow-xl ">
+                <Card className="opacity-75 shadow-lg backdrop-blur-sm transition-shadow duration-300 hover:shadow-xl">
                   <CardContent className="p-6">
                     <div className="mb-4 flex items-center">
                       <skill.icon className="mr-4 size-8 " />

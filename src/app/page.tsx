@@ -7,13 +7,15 @@ import Studies from '@/components/sections/Studies';
 
 export default function Page() {
   return (
-    <>
-      <Home />
-      <Profile />
-      <Experience />
-      <Studies />
-      <Skills />
-      <Projects />
-    </>
+    <div className="flex w-full items-center justify-center">
+      <div className="w-4/5">
+        <Home />
+        <Profile />
+        <Experience />
+        <Studies />
+        <Skills />
+        <Projects />
+      </div>
+    </div>
   );
 }
