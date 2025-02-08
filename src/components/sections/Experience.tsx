@@ -1,6 +1,7 @@
 'use client';
 
 import { Card, CardContent } from '@/components/ui/card';
+import { siteConfig } from '@/config/site';
 import { motion } from 'framer-motion';
 
 const containerVariants = {
@@ -25,62 +26,93 @@ const itemVariants = {
   },
 };
 
-const experiences = [
-  {
-    company: 'Tech Innovators Inc.',
-    position: 'Senior Full Stack Developer',
-    period: 'Jan 2020 - Present',
-    description:
-      'Led a team of developers in creating scalable web applications using React and Node.js. Implemented CI/CD pipelines and improved overall code quality.',
-  },
-  {
-    company: 'Digital Solutions LLC',
-    position: 'Full Stack Developer',
-    period: 'Mar 2017 - Dec 2019',
-    description:
-      'Developed and maintained multiple client websites. Worked on both front-end and back-end technologies, including Angular and Django.',
-  },
-  {
-    company: 'StartUp Ventures',
-    position: 'Junior Web Developer',
-    period: 'Jun 2015 - Feb 2017',
-    description:
-      'Assisted in the development of a SaaS platform. Gained experience in responsive design and RESTful API integration.',
-  },
-];
-
 export default function Experience() {
+  const experiences = siteConfig.experiences;
+
   return (
-    <section
-      id="experience"
-      className="flex h-screen snap-start items-center bg-white/30 backdrop-blur-sm dark:bg-gray-900/30"
-    >
+    <section id="experience" className="flex min-h-screen snap-start items-center">
       <motion.div
-        className="container mx-auto max-h-full overflow-y-auto px-4 py-16"
+        className="container mx-auto max-h-full overflow-y-auto px-4 pb-56 pt-20"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
       >
-        <h2 className="mb-12 bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-center text-4xl font-bold text-transparent">
+        <h2 className="bg-text mb-12 bg-clip-text text-center text-4xl font-bold text-transparent">
           Professional Experience
         </h2>
-        <div className="space-y-8">
-          {experiences.map((exp, index) => {
-            const uniqueKey = `${exp.company}-${index}`;
-            return (
-              <motion.div key={uniqueKey} variants={itemVariants}>
-                <Card className="bg-white/80 shadow-lg backdrop-blur-sm transition-shadow duration-300 hover:shadow-xl dark:bg-gray-800/80">
-                  <CardContent className="p-6">
-                    <h3 className="mb-2 text-2xl font-bold text-blue-600 dark:text-blue-400">{exp.position}</h3>
-                    <h4 className="mb-2 text-xl text-gray-700 dark:text-gray-300">{exp.company}</h4>
-                    <p className="mb-4 text-sm text-gray-500 dark:text-gray-400">{exp.period}</p>
-                    <p className="text-gray-600 dark:text-gray-300">{exp.description}</p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            );
-          })}
+
+        <div className="relative mx-auto max-w-4xl">
+          <div className="space-y-6 border-l-2 border-dashed border-primary/30">
+            {experiences.map((experience, index) => {
+              const uniqueKey = `${experience.position}-${index}`;
+              return (
+                <motion.div
+                  key={uniqueKey}
+                  variants={itemVariants}
+                  className="relative w-full"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    className="absolute -top-0.5 z-10 -ml-3.5 size-7 rounded-full bg-secondary"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+
+                  <div className="ml-6">
+                    <Card className="w-full opacity-75 shadow-lg backdrop-blur-sm transition-shadow duration-300 hover:shadow-xl">
+                      <CardContent className="p-6">
+                        <div className="flex justify-between">
+                          <h3 className="font-bold text-primary">{experience.position}</h3>
+                          <span className="text-sm font-semibold text-primary/70">
+                            {experience.company}
+                          </span>
+                        </div>
+
+                        <p className="mt-2 max-w-screen-sm text-sm text-primary/60">
+                          {experience.description}
+                        </p>
+
+                        <ul className="mt-2 max-w-screen-sm list-inside list-disc text-sm text-primary/60">
+                          {experience.details.map((detail, idx) => {
+                            const uniqueDetailKey = `${detail}-${idx}`;
+                            return (
+                              <li key={uniqueDetailKey}>{detail}</li>
+                            );
+                          })}
+                        </ul>
+
+                        <div className="mt-4 flex flex-wrap gap-2">
+                          {experience.technologies.map((tech, idx) => {
+                            const uniqueTechKey = `${tech.name}-${idx}`;
+                            return (
+                              <div
+                                key={uniqueTechKey}
+                                className="flex items-center gap-1 rounded-full bg-primary/10 px-3 py-1 text-sm text-primary"
+                              >
+                                {tech.icon && <tech.icon className="size-4" />}
+                                <span>{tech.name}</span>
+                              </div>
+                            );
+                          })}
+                        </div>
+
+                        <span className="mt-4 block text-sm font-semibold text-primary">
+                          {experience.period}
+                        </span>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
       </motion.div>
     </section>

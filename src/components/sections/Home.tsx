@@ -61,14 +61,14 @@ export default function Home() {
   return (
     <section
       id="home"
-      className="flex h-screen snap-start items-center justify-center bg-white/10 dark:bg-gray-900/10"
+      className="flex h-screen snap-start items-center justify-center "
     >
       <motion.div className="row-start-2 flex flex-col items-center justify-center gap-4 px-4" variants={containerVariants} initial="hidden" animate="visible">
-        <motion.div className="rounded-md bg-black/50 p-4 dark:bg-white/50" variants={containerVariants} initial="hidden" animate="visible">
+        <motion.div className="rounded-md bg-secondary/50 p-4" variants={containerVariants} initial="hidden" animate="visible">
           <motion.div className="mx-auto flex h-full w-4/5 items-center justify-between" variants={containerVariants} initial="hidden" animate="visible">
-            <motion.div className="flex size-full flex-col justify-center gap-2 text-white dark:text-black" variants={containerVariants} initial="hidden" animate="visible">
+            <motion.div className="flex size-full flex-col justify-center gap-2 text-base" variants={containerVariants} initial="hidden" animate="visible">
               <motion.h1 className="text-4xl font-semibold md:text-5xl lg:text-6xl xl:text-7xl">
-                <TypedText text="Hi there, I am'" />
+                <TypedText text="Hi there, I am" />
               </motion.h1>
               <motion.h1 className="bg-text text-4xl font-semibold md:text-5xl lg:text-6xl xl:text-7xl">
                 <TypedText text="Diego MN!" />
@@ -80,7 +80,7 @@ export default function Home() {
               <motion.div variants={itemVariants} className="mx-auto flex items-center justify-center">
                 <a
                   href="#profile"
-                  className="inline-flex size-12 items-center justify-center rounded-full bg-primary text-white transition duration-300 ease-in-out hover:scale-105 dark:text-black"
+                  className="inline-flex size-12 items-center justify-center rounded-full bg-secondary/50 transition duration-300 ease-in-out hover:scale-105"
                 >
                   <ArrowDown className="size-6 animate-bounce" />
                 </a>

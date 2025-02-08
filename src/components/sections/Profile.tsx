@@ -62,7 +62,7 @@ export default function Profile() {
   return (
     <section
       id="profile"
-      className="flex min-h-screen snap-start items-center justify-center bg-white/30 dark:bg-gray-900/30"
+      className="flex min-h-screen snap-start items-center justify-center"
     >
       <motion.div
         className="container mx-auto px-4 pb-56 pt-20"
@@ -91,16 +91,16 @@ export default function Profile() {
             variants={itemVariants}
             className="z-10 w-full lg:w-3/5"
           >
-            <Card className="mx-2 rounded-lg bg-white/80 opacity-75 shadow-2xl backdrop-blur-sm dark:bg-gray-800/80 sm:mx-6 lg:mx-0">
+            <Card className="mx-2 rounded-lg opacity-75 shadow-2xl backdrop-blur-sm sm:mx-6 lg:mx-0">
               <CardContent className="p-4 text-center md:p-12 lg:text-left">
-                <h1 className="pt-8 text-3xl font-bold text-blue-600 dark:text-blue-400 lg:pt-0">
+                <h1 className="bg-text pt-8 text-3xl font-bold lg:pt-0">
                   Diego Montes Novio
                 </h1>
-                <p className="flex items-center justify-center pt-4 text-base font-bold lg:justify-start">
+                <p className="flex items-center justify-center pt-4 text-base lg:justify-start">
                   <FaBriefcase size={16} className="mr-2" />
                   Developer
                 </p>
-                <p className="flex items-center justify-center pt-1 text-base font-bold lg:justify-start">
+                <p className="flex items-center justify-center pt-1 text-base lg:justify-start">
                   <TbWorld size={16} className="mr-2" />
                   Santiago de Compostela
                 </p>

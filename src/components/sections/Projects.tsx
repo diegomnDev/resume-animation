@@ -35,7 +35,7 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="flex min-h-screen snap-start items-center justify-center bg-white/30 dark:bg-gray-900/30"
+      className="flex min-h-screen snap-start items-center justify-center"
     >
       <motion.div
         className="container mx-auto max-h-[80vh] overflow-y-auto px-4 py-20"
@@ -44,22 +44,22 @@ export default function Projects() {
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
       >
-        <h2 className="mb-12 bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-center text-4xl font-bold text-transparent">
+        <h2 className="bg-text mb-12 bg-clip-text text-center text-4xl font-bold text-transparent">
           Featured Projects
         </h2>
-        <div className="grid gap-8 lg:grid-cols-2">
+        <div className="grid gap-8 lg:grid-cols-2 ">
           {projects.map((project, index) => {
             const uniqueKey = `${project.name}-${index}`;
             return (
               <motion.div key={uniqueKey} variants={itemVariants}>
-                <Card className="bg-white/80 shadow-lg backdrop-blur-sm transition-shadow duration-300 hover:shadow-xl dark:bg-gray-800/80">
+                <Card className="opacity-75 shadow-lg backdrop-blur-sm transition-shadow duration-300 hover:shadow-xl">
                   <CardContent className="p-6">
-                    <h3 className="mb-2 text-2xl font-bold text-blue-600 dark:text-blue-400">{project.name}</h3>
-                    <p className="mb-4 text-gray-600 dark:text-gray-300">{project.description}</p>
-                    <p className="mb-4 text-gray-600 dark:text-gray-300">
+                    <h3 className="mb-2 text-2xl font-bold">{project.name}</h3>
+                    <p className="mb-4 text-sm">{project.description}</p>
+                    <p className="mb-4 text-sm">
                       Status:
                       {' '}
-                      <span className="text-blue-600 dark:text-blue-400">{project.status}</span>
+                      <span className="font-bold text-primary/70">{project.status}</span>
                     </p>
                     <div className="flex flex-wrap gap-2">
                       {project.technologies.map((tech, techIndex) => {
@@ -67,7 +67,7 @@ export default function Projects() {
                         return (
                           <span
                             key={uniqueTechKey}
-                            className="flex items-center rounded bg-gray-200 px-2 py-1 text-sm text-gray-700 dark:bg-gray-600 dark:text-gray-300"
+                            className="flex items-center rounded px-2 py-1 text-sm "
                           >
                             {tech.icon && <tech.icon className="mr-1 size-4" />}
                             {tech.name}
@@ -78,7 +78,7 @@ export default function Projects() {
                     {project.url && (
                       <Link
                         href={project.url}
-                        className="mt-4 flex items-center gap-2 text-blue-600 hover:underline dark:text-blue-400"
+                        className="mt-4 flex items-center gap-2 hover:underline"
                         rel="noopener noreferrer"
                         target="_blank"
                       >

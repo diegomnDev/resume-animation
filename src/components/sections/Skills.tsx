@@ -33,7 +33,7 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="flex min-h-screen snap-start items-center justify-center bg-white/30 dark:bg-gray-900/30"
+      className="flex min-h-screen snap-start items-center justify-center "
     >
       <motion.div
         className="container mx-auto max-h-[80vh] overflow-y-auto px-4 py-20"
@@ -42,7 +42,7 @@ export default function Skills() {
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
       >
-        <h2 className="mb-12 bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-center text-4xl font-bold text-transparent">
+        <h2 className="bg-text mb-12 bg-clip-text text-center text-4xl font-bold text-transparent">
           Technical Skills
         </h2>
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -50,13 +50,13 @@ export default function Skills() {
             const uniqueKey = `${skill.name}-${index}`;
             return (
               <motion.div key={uniqueKey} variants={itemVariants}>
-                <Card className="bg-white/80 shadow-lg backdrop-blur-sm transition-shadow duration-300 hover:shadow-xl dark:bg-gray-800/80">
+                <Card className="shadow-lg backdrop-blur-sm transition-shadow duration-300 hover:shadow-xl ">
                   <CardContent className="p-6">
                     <div className="mb-4 flex items-center">
                       <skill.icon className="mr-4 size-8 " />
-                      <h3 className="text-xl font-bold text-gray-800 dark:text-gray-200">{skill.name}</h3>
+                      <h3 className="text-xl font-bold ">{skill.name}</h3>
                     </div>
-                    <div className="h-2.5 w-full rounded-full bg-gray-400 dark:bg-gray-600">
+                    <div className="h-2.5 w-full rounded-full bg-primary/50">
                       <motion.div
                         className="h-2.5 rounded-full bg-primary"
                         style={{ width: `${skill.level}%` }}
@@ -65,7 +65,7 @@ export default function Skills() {
                         transition={{ duration: 1, ease: 'easeOut' }}
                       />
                     </div>
-                    <p className="mt-2 text-right text-sm text-gray-600 dark:text-gray-300">
+                    <p className="mt-2 text-right text-sm">
                       {skill.level}
                       %
                     </p>
