@@ -18,7 +18,7 @@ export default function RootLayout({
       <body className={`${firaCode.className} overflow-x-hidden`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <div className="flex">
-            <main className="smooth-scroll h-screen grow snap-y snap-mandatory overflow-y-scroll">{children}</main>
+            <main className="smooth-scroll h-screen w-full snap-y snap-mandatory overflow-y-scroll">{children}</main>
             <Navigation />
             <ThemeSwitcher />
           </div>

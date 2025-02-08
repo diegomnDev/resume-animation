@@ -35,10 +35,10 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="flex min-h-screen snap-start items-center bg-gray-100/30 backdrop-blur-sm dark:bg-gray-800/30"
+      className="flex min-h-screen snap-start items-center justify-center bg-white/30 dark:bg-gray-900/30"
     >
       <motion.div
-        className="container mx-auto px-4 py-16"
+        className="container mx-auto max-h-[80vh] overflow-y-auto px-4 py-20"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
@@ -47,7 +47,7 @@ export default function Projects() {
         <h2 className="mb-12 bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-center text-4xl font-bold text-transparent">
           Featured Projects
         </h2>
-        <div className="grid gap-8 md:grid-cols-2">
+        <div className="grid gap-8 lg:grid-cols-2">
           {projects.map((project, index) => {
             const uniqueKey = `${project.name}-${index}`;
             return (

@@ -62,10 +62,10 @@ export default function Profile() {
   return (
     <section
       id="profile"
-      className="flex h-screen snap-start place-items-center bg-gray-100/30 dark:bg-gray-800/30"
+      className="flex min-h-screen snap-start items-center justify-center bg-white/30 dark:bg-gray-900/30"
     >
       <motion.div
-        className="container mx-auto px-4"
+        className="container mx-auto px-4 pb-56 pt-20"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
@@ -122,7 +122,7 @@ export default function Profile() {
                 <div className="flex flex-col justify-center gap-4 pt-8 sm:flex-row">
                   <Button onClick={handleOpenModal}>Get In Touch</Button>
                   <Select onValueChange={handleDownloadCV}>
-                    <SelectTrigger className="w-[160px] bg-secondary shadow-xl">
+                    <SelectTrigger className="w-full bg-secondary shadow-xl md:w-[160px]">
                       <SelectValue placeholder="Download CV" />
                     </SelectTrigger>
                     <SelectContent>

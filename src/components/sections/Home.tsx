@@ -63,7 +63,7 @@ export default function Home() {
       id="home"
       className="flex h-screen snap-start items-center justify-center bg-white/10 dark:bg-gray-900/10"
     >
-      <motion.div className="row-start-2 flex flex-col items-center justify-center gap-4" variants={containerVariants} initial="hidden" animate="visible">
+      <motion.div className="row-start-2 flex flex-col items-center justify-center gap-4 px-4" variants={containerVariants} initial="hidden" animate="visible">
         <motion.div className="rounded-md bg-black/50 p-4 dark:bg-white/50" variants={containerVariants} initial="hidden" animate="visible">
           <motion.div className="mx-auto flex h-full w-4/5 items-center justify-between" variants={containerVariants} initial="hidden" animate="visible">
             <motion.div className="flex size-full flex-col justify-center gap-2 text-white dark:text-black" variants={containerVariants} initial="hidden" animate="visible">

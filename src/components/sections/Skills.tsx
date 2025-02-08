@@ -33,10 +33,10 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="flex h-screen snap-start items-center bg-white/30 dark:bg-gray-900/30"
+      className="flex min-h-screen snap-start items-center justify-center bg-white/30 dark:bg-gray-900/30"
     >
       <motion.div
-        className="container mx-auto max-h-full overflow-y-auto px-4 py-16"
+        className="container mx-auto max-h-[80vh] overflow-y-auto px-4 py-20"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"

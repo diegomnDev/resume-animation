@@ -9,12 +9,6 @@ const bundleAnalyzer = withBundleAnalyzer({
 const nextConfig = {
   poweredByHeader: false,
   reactStrictMode: true,
-  images: {
-    domains: ['source.unsplash.com'],
-  },
-  experimental: {
-    optimizeCss: false,
-  },
 };
 
 export default process.env.ANALYZE === 'true'

@@ -7,13 +7,13 @@ import Studies from '@/components/sections/Studies';
 
 export default function Page() {
   return (
-    <div className="container mx-auto px-4">
+    <>
       <Home />
       <Profile />
       <Experience />
       <Studies />
       <Skills />
       <Projects />
-    </div>
+    </>
   );
 }
