@@ -10,7 +10,6 @@ const schema = z.object({
 });
 
 const apiKey = process.env.SENDGRID_API_KEY;
-const recipientEmail = process.env.SENDGRID_VERIFIED_SENDER;
 const verifiedSender = process.env.SENDGRID_VERIFIED_SENDER;
 
 if (!apiKey) {
@@ -40,9 +39,9 @@ export async function sendEmail(formData: {
     const { name, email, message } = validatedFields.data;
 
     await sgMail.send({
-      to: recipientEmail,
+      to: email,
       from: verifiedSender!,
-      replyTo: email,
+      replyTo: verifiedSender,
       subject: 'New Contact Form Submission',
       text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
       html: `

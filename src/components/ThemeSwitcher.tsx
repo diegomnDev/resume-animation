@@ -21,9 +21,12 @@ export function ThemeSwitcher() {
     <Button
       type="button"
       onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-      className="fixed right-8 top-4 z-50 rounded-full p-2 opacity-75 shadow-lg backdrop-blur-sm transition-all duration-300 hover:scale-150"
+      className="fixed right-8 top-4 z-50 size-10 rounded-full p-2 opacity-75 shadow-lg backdrop-blur-sm transition-all duration-300 hover:scale-150"
+      aria-label="Toggle theme"
     >
-      {theme === 'dark' ? <Sun className="size-6" /> : <Moon className="size-6" />}
+      {theme === 'dark'
+        ? <Sun className="size-5" />
+        : <Moon className="size-5" />}
     </Button>
   );
 }
