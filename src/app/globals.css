@@ -162,9 +162,10 @@ body {
 }
 
 @layer utilities {
-  /* Para Firefox */
+  /* Para Firefox y Edge */
   .scrollbar-hide {
     scrollbar-width: none;
+    -ms-overflow-style: none;
   }
 
   /* Para Chrome, Safari y Opera */
