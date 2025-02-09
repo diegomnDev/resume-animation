@@ -55,7 +55,7 @@ const Background: React.FC = () => {
       <div className="absolute inset-0 " />
 
       {/* Subtle Grid Overlay */}
-      <div className="absolute inset-0 bg-slate-200 opacity-20 dark:bg-slate-50" />
+      <div className="absolute inset-0 bg-slate-200 opacity-5 dark:bg-slate-50" />
 
       {/* Floating Developer Symbols */}
       <div className="absolute inset-0">

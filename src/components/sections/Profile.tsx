@@ -5,11 +5,12 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Toaster } from '@/components/ui/toaster';
+import { siteConfig } from '@/config/site';
 import * as amplitude from '@amplitude/analytics-browser';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useState } from 'react';
-import { FaBriefcase } from 'react-icons/fa6';
+import { FaBriefcase, FaGithub, FaLinkedin } from 'react-icons/fa6';
 import { TbWorld } from 'react-icons/tb';
 import { ContactModal } from '../ContactModal';
 
@@ -144,6 +145,14 @@ export default function Profile() {
                       <SelectItem value="spanish">Spanish</SelectItem>
                     </SelectContent>
                   </Select>
+                </div>
+                <div className="mx-auto mt-6 flex w-4/5 flex-wrap items-center justify-center space-x-2 pb-16 lg:w-full lg:pb-0">
+                  <a href={`${siteConfig.links.github}`} data-tippy-content="@github_handle" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                    <FaGithub size={24} />
+                  </a>
+                  <a href={`${siteConfig.links.linkedin}`} data-tippy-content="@linkedin_handle" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <FaLinkedin size={24} />
+                  </a>
                 </div>
               </CardContent>
             </Card>
