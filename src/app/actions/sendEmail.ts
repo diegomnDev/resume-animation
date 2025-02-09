@@ -1,5 +1,6 @@
 'use server';
 
+import sgMail from '@sendgrid/mail';
 import { z } from 'zod';
 
 const schema = z.object({
@@ -8,48 +9,56 @@ const schema = z.object({
   message: z.string().min(1, { message: 'Message is required' }),
 });
 
-export async function sendEmail(_: any, formData: FormData) {
-  const validatedFields = schema.safeParse({
-    name: formData.get('name'),
-    email: formData.get('email'),
-    message: formData.get('message'),
-  });
+const apiKey = process.env.SENDGRID_API_KEY;
+const recipientEmail = process.env.SENDGRID_VERIFIED_SENDER;
+const verifiedSender = process.env.SENDGRID_VERIFIED_SENDER;
 
-  if (!validatedFields.success) {
-    return { error: 'Invalid form data' };
-  }
+if (!apiKey) {
+  console.error('SENDGRID_API_KEY is not set');
+}
 
-  const { name, email, message } = validatedFields.data;
+if (!verifiedSender) {
+  console.error('SENDGRID_VERIFIED_SENDER is not set');
+}
 
-  const apiKey = process.env.SENDGRID_API_KEY;
-  if (!apiKey) {
-    console.error('SENDGRID_API_KEY is not set');
-    return { error: 'Configuration error' };
-  }
+sgMail.setApiKey(apiKey!);
 
-  const response = await fetch('https://api.sendgrid.com/v3/mail/send', {
-    method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${apiKey}`,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      personalizations: [{ to: [{ email: 'your-email@example.com' }] }],
-      from: { email: 'your-sender@example.com' },
-      subject: 'New contact form submission',
-      content: [
-        {
-          type: 'text/plain',
-          value: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
-        },
-      ],
-    }),
-  });
+export async function sendEmail(formData: {
+  name: string;
+  email: string;
+  message: string;
+}) {
+  try {
+    const validatedFields = schema.safeParse(formData);
 
-  if (response.ok) {
+    if (!validatedFields.success) {
+      return {
+        error: 'Invalid form data',
+      };
+    }
+
+    const { name, email, message } = validatedFields.data;
+
+    await sgMail.send({
+      to: recipientEmail,
+      from: verifiedSender!,
+      replyTo: email,
+      subject: 'New Contact Form Submission',
+      text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
+      html: `
+        <h2>New Contact Form Submission</h2>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Message:</strong></p>
+        <p>${message.replace(/\n/g, '<br>')}</p>
+      `,
+    });
+
     return { success: true };
-  } else {
-    console.error('SendGrid API error:', await response.text());
-    return { error: 'Failed to send email' };
+  } catch (error: any) {
+    console.error('SendGrid API error:', error.response?.body || error.message);
+    return {
+      error: 'Failed to send email. Please try again later.',
+    };
   }
 }

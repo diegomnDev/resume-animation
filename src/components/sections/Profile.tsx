@@ -4,10 +4,11 @@ import { sendEmail } from '@/app/actions/sendEmail';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Toaster } from '@/components/ui/toaster';
 import * as amplitude from '@amplitude/analytics-browser';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { useActionState, useState } from 'react';
+import { useState } from 'react';
 import { FaBriefcase } from 'react-icons/fa6';
 import { TbWorld } from 'react-icons/tb';
 import { ContactModal } from '../ContactModal';
@@ -37,7 +38,7 @@ const itemVariants = {
 
 export default function Profile() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [state, action, isPending] = useActionState(sendEmail, null);
+  const [isPending, setIsPending] = useState(false);
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -46,6 +47,18 @@ export default function Profile() {
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
+  };
+
+  const handleFormSubmit = async (data: { name: string; email: string; message: string }) => {
+    setIsPending(true);
+    try {
+      const result = await sendEmail(data);
+      setIsPending(false);
+      return result;
+    } catch (error) {
+      setIsPending(false);
+      return { error: `An unexpected error occurred: ${error}` };
+    }
   };
 
   const handleDownloadCV = (language: string) => {
@@ -155,16 +168,11 @@ export default function Profile() {
       <ContactModal
         isOpen={isModalOpen}
         onClose={handleCloseModal}
-        action={async (_prevState, data) => {
-          const formData = new FormData();
-          formData.append('name', data.name);
-          formData.append('email', data.email);
-          formData.append('message', data.message);
-          return await action(formData);
-        }}
+        action={handleFormSubmit}
         isPending={isPending}
-        state={state}
       />
+
+      <Toaster />
     </section>
   );
 }
