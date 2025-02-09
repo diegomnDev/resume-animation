@@ -79,6 +79,9 @@ export function ContactModal({ isOpen, onClose, action, isPending }: ContactModa
       <DialogContent>
         <DialogHeader>
           <DialogTitle>Contact Me</DialogTitle>
+          <div className="my-3 w-full border-b-2 border-primary opacity-25">
+            Fill out the form below to get in touch.
+          </div>
         </DialogHeader>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div>
