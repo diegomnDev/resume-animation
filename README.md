@@ -29,7 +29,7 @@ An interactive, animated, and responsive developer resume built with Next.js 15,
 - **Next.js 15**: React framework with App Router for optimized rendering and routing
 - **React 19**: JavaScript library for building user interfaces with the latest features
 - **TypeScript 5.2**: Typed superset of JavaScript for enhanced developer experience
-- **Tailwind CSS 3.3**: Utility-first CSS framework for rapid UI development
+- **Tailwind CSS**: Utility-first CSS framework for rapid UI development
 - **Framer Motion**: Animation library for React components
 - **React Hook Form**: Performant, flexible, and extensible forms with easy-to-use validation
 - **Yup**: Object schema validation for form inputs
@@ -50,8 +50,8 @@ To run this project locally:
 1. Clone the repository:
 
    ```sh
-   git clone https://github.com/yourusername/interactive-resume.git
-   cd interactive-resume
+   git clone https://github.com/makucg/resume-animation.git
+   cd resume-animation
    ```
 
 2. Install dependencies:
@@ -137,8 +137,8 @@ I approach problems with curiosity and perseverance, always looking for efficien
 Feel free to reach out for collaboration or job opportunities:
 
 - **Email:** <diego.montes@outlook.com>
-- **LinkedIn:** [linkedin.com/in/yourprofile](https://linkedin.com/in/yourprofile)
-- **GitHub:** [github.com/yourusername](https://github.com/yourusername)
+- **LinkedIn:** [https://www.linkedin.com/in/diego-montes-novio](https://www.linkedin.com/in/diego-montes-novio-50503448/)
+- **GitHub:** [github.com/makucg](https://github.com/makucg)
 
 ## 📄 License
 
