@@ -96,6 +96,7 @@ export default function Profile() {
                 <h1 className="bg-text pt-8 text-3xl font-bold lg:pt-0">
                   Diego Montes Novio
                 </h1>
+                <div className="mx-auto w-4/5 border-b-2 border-primary pt-3 opacity-25 lg:mx-0"></div>
                 <p className="flex items-center justify-center pt-4 text-base lg:justify-start">
                   <FaBriefcase size={16} className="mr-2" />
                   Developer

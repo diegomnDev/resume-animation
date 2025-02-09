@@ -32,7 +32,7 @@ export default function Experience() {
   return (
     <section id="experience" className="flex min-h-screen snap-start items-center">
       <motion.div
-        className="container mx-auto max-h-full overflow-y-auto pb-56 pt-20"
+        className="scrollbar-hide container mx-auto max-h-[80vh] overflow-y-auto pb-56 pt-20"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
@@ -42,7 +42,7 @@ export default function Experience() {
           Professional Experience
         </h2>
 
-        <div className="relative mx-auto max-w-4xl">
+        <div className="relative mx-auto max-w-4xl px-4">
           <div className="space-y-6 border-l-2 border-dashed border-primary/30">
             {experiences.map((experience, index) => {
               const uniqueKey = `${experience.position}-${index}`;
@@ -56,7 +56,7 @@ export default function Experience() {
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                     fill="currentColor"
-                    className="absolute -top-0.5 z-10 -ml-3.5 size-7 rounded-full bg-secondary"
+                    className="absolute -top-0.5 z-10 -ml-3.5 size-7 rounded-full bg-secondary opacity-75"
                   >
                     <path
                       fillRule="evenodd"

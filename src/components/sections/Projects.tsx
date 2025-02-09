@@ -37,7 +37,7 @@ export default function Projects() {
       className="flex min-h-screen snap-start items-center justify-center"
     >
       <motion.div
-        className="container mx-auto max-h-[80vh] overflow-y-auto pb-56 pt-20"
+        className="scrollbar-hide container mx-auto max-h-[80vh] overflow-y-auto pb-56 pt-20"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
@@ -74,7 +74,7 @@ export default function Projects() {
                               key={uniqueTechKey}
                               className="flex items-center rounded px-2 py-1 text-sm"
                             >
-                              {tech.icon && <tech.icon className={`${isEven ? 'ml-1' : 'mr-1'} size-4`} />}
+                              {tech.icon && <tech.icon className="mr-1 size-4" />}
                               {tech.name}
                             </span>
                           );

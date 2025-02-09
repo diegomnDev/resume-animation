@@ -5,7 +5,14 @@ import { useEffect } from 'react';
 
 export function Analytics() {
   useEffect(() => {
-    amplitude.init(process.env.NEXT_PUBLIC_AMPLITUDE_API_KEY || '');
+    if (!process.env.NEXT_PUBLIC_AMPLITUDE_API_KEY) {
+      return;
+    }
+    amplitude.init(process.env.NEXT_PUBLIC_AMPLITUDE_API_KEY, undefined, {
+      defaultTracking: {
+        sessions: true,
+      },
+    });
   }, []);
 
   return null;

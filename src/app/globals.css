@@ -142,11 +142,6 @@ body {
   font-family: 'Fira Code', monospace;
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
 ::-webkit-scrollbar-track {
   background: transparent;
 }
@@ -163,6 +158,18 @@ body {
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  /* Para Firefox */
+  .scrollbar-hide {
+    scrollbar-width: none;
+  }
+
+  /* Para Chrome, Safari y Opera */
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
   }
 }
 

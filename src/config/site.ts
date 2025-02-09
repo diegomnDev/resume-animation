@@ -36,11 +36,11 @@ import {
 } from 'react-icons/si';
 
 export const siteConfig = {
-  title: 'Resume',
-  description: 'Diego Montes Novio - Developer',
+  title: 'Diego Montes Novio - Portfolio',
+  description: 'Diego Montes Novio - Full Stack Developer specialized in backend development, microservices, and software architecture. Experienced in Java, Spring Boot, and modern web technologies like React and Next.js.',
   author: 'Diego Montes Novio',
   email: 'diego.montes@outlook.com',
-  url: 'https://dmndev-resume.vercel.app',
+  url: process.env.NODE_ENV === 'production' ? 'https://dmndev-resume.vercel.app' : 'http://localhost:3000',
   keywords: 'Diego Montes Novio, Diego Montes, Diego, Montes, Novio, dmndev, dmndev resume, devmon, devmon resume, developer, CV, Backend Developer, Full Stack Developer, Java Developer, Spring Developer, Hibernate Developer, JavaScript Developer, React Developer, Next.js Developer, Node.js Developer, Python Developer, Swift Developer, WatchOS Developer, iOS Developer, Android Developer, Flutter Developer, Mobile Developer, Web Developer, Frontend Developer, Backend Developer, Software Developer, Software Engineer, Analyst Developer, GasoAhorro',
   links: {
     github: 'https://github.com/makucg',
@@ -121,9 +121,17 @@ export const siteConfig = {
       ],
       duration: '11 months',
       technologies: [
+        { name: 'Java', icon: FaJava },
+        { name: 'Spring', icon: SiSpring },
+        { name: 'Hibernate', icon: SiHibernate },
+        { name: 'RESTful APIs', icon: null },
+        { name: 'Microservices', icon: null },
+        { name: 'Docker', icon: SiDocker },
+        { name: 'AWS', icon: SiAmazonwebservices },
         { name: 'JavaScript', icon: SiJavascript },
         { name: 'JQuery', icon: SiJquery },
         { name: 'Thymeleaf', icon: SiThymeleaf },
+
       ],
     },
     {
