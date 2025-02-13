@@ -1,17 +1,119 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+@plugin 'tailwindcss-animate';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --color-chart-1: hsl(var(--chart-1));
+  --color-chart-2: hsl(var(--chart-2));
+  --color-chart-3: hsl(var(--chart-3));
+  --color-chart-4: hsl(var(--chart-4));
+  --color-chart-5: hsl(var(--chart-5));
+
+  --color-sidebar: hsl(var(--sidebar-background));
+  --color-sidebar-foreground: hsl(var(--sidebar-foreground));
+  --color-sidebar-primary: hsl(var(--sidebar-primary));
+  --color-sidebar-primary-foreground: hsl(var(--sidebar-primary-foreground));
+  --color-sidebar-accent: hsl(var(--sidebar-accent));
+  --color-sidebar-accent-foreground: hsl(var(--sidebar-accent-foreground));
+  --color-sidebar-border: hsl(var(--sidebar-border));
+  --color-sidebar-ring: hsl(var(--sidebar-ring));
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
 }
 
-.dark {
-  --foreground-rgb: 255, 255, 255;
-  --background-start-rgb: 0, 0, 0;
-  --background-end-rgb: 0, 0, 0;
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
+
+@utility scrollbar-hide {
+  /* Para Firefox y Edge */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  /* Para Chrome, Safari y Opera */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@layer utilities {
+  :root {
+    --foreground-rgb: 0, 0, 0;
+    --background-start-rgb: 214, 219, 220;
+    --background-end-rgb: 255, 255, 255;
+  }
+
+  .dark {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
 }
 
 @layer base {
@@ -86,70 +188,48 @@
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background-image: url('/assets/img/background.jpg');
-}
-
-@keyframes float {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
-
-/* Custom styles for the Mac-style dock */
-@media (max-width: 1023px) {
-  .dock {
-    @apply fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-white/20 dark:bg-gray-800/20 backdrop-blur-md rounded-full p-2 shadow-lg;
-  }
-
-  .dock ul {
-    @apply flex items-center space-x-4;
-  }
-
-  .dock li {
-    @apply transition-all duration-300 ease-in-out;
-  }
-
-  .dock li:hover {
-    @apply scale-125;
-  }
-}
-
-/* Smooth scrolling */
-.smooth-scroll {
-  scroll-behavior: smooth;
-  transition: all 1s ease-in-out;
-}
-
-@layer base {
-  * {
-    @apply border-border;
-  }
+@layer utilities {
   body {
-    @apply bg-background text-foreground;
+    color: rgb(var(--foreground-rgb));
+    background-image: url('/assets/img/background.jpg');
   }
-}
 
-/* Apply Fira Code to all text */
-* {
-  font-family: 'Fira Code', monospace;
-}
+  @keyframes float {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
 
-::-webkit-scrollbar-track {
-  background: transparent;
-}
+  /* Custom styles for the Mac-style dock */
+  @media (max-width: 1023px) {
+    .dock {
+      @apply fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-white/20 dark:bg-gray-800/20 backdrop-blur-md rounded-full p-2 shadow-lg;
+    }
 
-::-webkit-scrollbar-thumb {
-  background-color: rgba(155, 155, 155, 0.5);
-  border-radius: 20px;
-  border: transparent;
+    .dock ul {
+      @apply flex items-center space-x-4;
+    }
+
+    .dock li {
+      @apply transition-all duration-300 ease-in-out;
+    }
+
+    .dock li:hover {
+      @apply scale-125;
+    }
+  }
+
+  /* Smooth scrolling */
+  .smooth-scroll {
+    scroll-behavior: smooth;
+    transition: all 1s ease-in-out;
+  }
 }
 
 @layer base {
@@ -162,15 +242,28 @@ body {
 }
 
 @layer utilities {
-  /* Para Firefox y Edge */
-  .scrollbar-hide {
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+  /* Apply Fira Code to all text */
+  * {
+    font-family: 'Fira Code', monospace;
   }
 
-  /* Para Chrome, Safari y Opera */
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(155, 155, 155, 0.5);
+    border-radius: 20px;
+    border: transparent;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
   }
 }
 

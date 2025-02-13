@@ -49,7 +49,7 @@ export default function Studies() {
             const uniqueKey = `${study.degree}-${index}`;
             return (
               <motion.div key={uniqueKey} variants={itemVariants} className="flex w-full justify-center">
-                <Card className="w-full opacity-75 shadow-lg backdrop-blur-sm transition-shadow duration-300 hover:shadow-xl">
+                <Card className="w-full opacity-75 shadow-lg backdrop-blur-xs transition-shadow duration-300 hover:shadow-xl">
                   <CardContent className="p-6 text-primary">
                     <h3 className="mb-2 text-2xl font-bold">{study.degree}</h3>
                     <h4 className="mb-2 text-xl text-primary/80 ">{study.institution}</h4>

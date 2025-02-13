@@ -66,7 +66,7 @@ export default function Experience() {
                   </svg>
 
                   <div className="ml-6">
-                    <Card className="w-full opacity-75 shadow-lg backdrop-blur-sm transition-shadow duration-300 hover:shadow-xl">
+                    <Card className="w-full opacity-75 shadow-lg backdrop-blur-xs transition-shadow duration-300 hover:shadow-xl">
                       <CardContent className="p-6">
                         <div className="flex justify-between">
                           <h3 className="font-bold text-primary">{experience.position}</h3>
@@ -75,11 +75,11 @@ export default function Experience() {
                           </span>
                         </div>
 
-                        <p className="mt-2 max-w-screen-sm text-sm text-primary/60">
+                        <p className="mt-2 max-w-(--breakpoint-sm) text-sm text-primary/60">
                           {experience.description}
                         </p>
 
-                        <ul className="mt-2 max-w-screen-sm list-inside list-disc text-sm text-primary/60">
+                        <ul className="mt-2 max-w-(--breakpoint-sm) list-inside list-disc text-sm text-primary/60">
                           {experience.details.map((detail, idx) => {
                             const uniqueDetailKey = `${detail}-${idx}`;
                             return (

@@ -68,7 +68,7 @@ export default function Navigation() {
       </nav>
 
       {/* Mac-style dock for small screens */}
-      <nav className="dock fixed bottom-4 left-1/2 z-50 -translate-x-1/2 rounded-full bg-white/20 p-2 shadow-lg backdrop-blur-sm dark:bg-gray-800/20 lg:hidden">
+      <nav className="dock fixed bottom-4 left-1/2 z-50 -translate-x-1/2 rounded-full bg-white/20 p-2 shadow-lg backdrop-blur-xs dark:bg-gray-800/20 lg:hidden">
         <ul className="flex items-center space-x-4">
           {navItems.map(({ icon: Icon, label, href }) => (
             <li key={href}>

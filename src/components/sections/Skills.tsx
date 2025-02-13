@@ -50,7 +50,7 @@ export default function Skills() {
             const uniqueKey = `${skill.name}-${index}`;
             return (
               <motion.div key={uniqueKey} variants={itemVariants}>
-                <Card className="opacity-75 shadow-lg backdrop-blur-sm transition-shadow duration-300 hover:shadow-xl">
+                <Card className="opacity-75 shadow-lg backdrop-blur-xs transition-shadow duration-300 hover:shadow-xl">
                   <CardContent className="p-6">
                     <div className="mb-4 flex items-center">
                       <skill.icon className="mr-4 size-8 " />

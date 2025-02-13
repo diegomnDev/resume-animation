@@ -57,7 +57,7 @@ export default function Projects() {
                 className={`flex ${isEven ? 'lg:justify-end' : 'lg:justify-start'}`}
               >
                 <div className="w-full lg:w-2/3">
-                  <Card className="opacity-75 shadow-lg backdrop-blur-sm transition-shadow duration-300 hover:shadow-xl">
+                  <Card className="opacity-75 shadow-lg backdrop-blur-xs transition-shadow duration-300 hover:shadow-xl">
                     <CardContent className={`p-6 ${isEven ? 'text-right' : ''}`}>
                       <h3 className="mb-2 text-2xl font-bold">{project.name}</h3>
                       <p className="mb-4 text-sm">{project.description}</p>

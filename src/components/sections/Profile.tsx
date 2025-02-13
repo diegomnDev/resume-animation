@@ -105,7 +105,7 @@ export default function Profile() {
             variants={itemVariants}
             className="z-10 w-full lg:w-3/5"
           >
-            <Card className="mx-2 rounded-lg opacity-75 shadow-2xl backdrop-blur-sm sm:mx-6 lg:mx-0">
+            <Card className="mx-2 rounded-lg opacity-75 shadow-2xl backdrop-blur-xs sm:mx-6 lg:mx-0">
               <CardContent className="p-4 text-center md:p-12 lg:text-left">
                 <h1 className="bg-text pt-8 text-3xl font-bold lg:pt-0">
                   Diego Montes Novio
