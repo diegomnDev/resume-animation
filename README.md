@@ -50,7 +50,7 @@ To run this project locally:
 1. Clone the repository:
 
    ```sh
-   git clone https://github.com/makucg/resume-animation.git
+   git clone https://github.com/diegomnDev/resume-animation.git
    cd resume-animation
    ```
 
@@ -138,7 +138,7 @@ Feel free to reach out for collaboration or job opportunities:
 
 - **Email:** <diego.montes@outlook.com>
 - **LinkedIn:** [https://www.linkedin.com/in/diego-montes-novio](https://www.linkedin.com/in/diego-montes-novio-50503448/)
-- **GitHub:** [github.com/makucg](https://github.com/makucg)
+- **GitHub:** [github.com/diegomnDev](https://github.com/diegomnDev)
 
 ## 📄 License
 

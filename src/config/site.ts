@@ -174,7 +174,7 @@ export const siteConfig = {
     'microservices architecture',
   ],
   links: {
-    github: 'https://github.com/makucg',
+    github: 'https://github.com/diegomnDev',
     linkedin: 'https://www.linkedin.com/in/diego-montes-novio-50503448/',
     sponsor: 'https://buymeacoffee.com/dmndev',
   },
